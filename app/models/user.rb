@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :articles
 
-  before_save { self.email = email.downcase if email.present? }
+  before_save :downcase_email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -15,4 +15,10 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
 
   has_secure_password
+
+  private
+
+  def downcase_email
+    self.email = email.downcase if email.present?
+  end
 end
