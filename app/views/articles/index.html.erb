@@ -11,6 +11,7 @@
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col">Author</th>
             <th scope="col" class="text-end pe-4">Actions</th>
           </tr>
         </thead>
@@ -19,6 +20,7 @@
             <tr>
               <td class="fw-semibold"><%= article.title %></td>
               <td class="text-secondary"><%= article.description %></td>
+              <td class="test-text-secondary"><%= article.user.username if article.user%></td>
               <td class="text-end pe-3">
                 <div class="btn-group btn-group-sm" role="group">
                   <%= link_to "Show", article_path(article), class: "btn btn-outline-primary" %>
